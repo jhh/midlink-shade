@@ -1,13 +1,17 @@
-#include <ESP8266WiFi.h>
-#include "config.h"
-#include "Shade.hpp"
+#include <ESP8266WebServer.h>
 
-const char* ssid = SSID;
-const char* password = WIFI_PASSWORD;
+#include "Shade.hpp"
+#include "WiFi.hpp"
+#include "config.h"
+
+using namespace midlink;
 
 Shade shade(15);
 
-void setup() {}
+void setup() {
+  Serial.begin(115200);
+  WiFi::Connect(SSID, WIFI_PASSWORD, "shades");
+}
 
 void loop() {
   shade.Toggle();

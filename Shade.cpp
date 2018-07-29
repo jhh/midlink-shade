@@ -1,11 +1,12 @@
 #include "Shade.hpp"
 #include <Arduino.h>
 
-Shade::Shade(int port) {
-  this->port = port;
-  pinMode(port, OUTPUT);
+using namespace midlink;
+
+Shade::Shade(int port) : port_(port) {
+  pinMode(port_, OUTPUT);
 }
 
-void Shade::Up() { digitalWrite(port, HIGH); }
+void Shade::Up() { digitalWrite(port_, HIGH); }
 
-void Shade::Toggle() { digitalWrite(port, !digitalRead(port)); }
+void Shade::Toggle() { digitalWrite(port_, !digitalRead(port_)); }
